@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casino Arcade - 25 Games</title>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/games.css">
+<link rel="stylesheet" href="css/account.css">
+<link rel="stylesheet" href="css/livechat.css">
+</head>
+<body>
+
+<!-- AUTH GATE -->
+<div class="auth-gate" id="authGate">
+  <div class="auth-box">
+    <div class="auth-tabs">
+      <button data-auth="login" class="active">Login</button>
+      <button data-auth="register">Register</button>
+    </div>
+    <h2 id="authTitle">Welcome Back</h2>
+    <div id="loginForm">
+      <input class="auth-input" id="loginEmail" placeholder="Email" type="email">
+      <input class="auth-input" id="loginPass" type="password" placeholder="Password">
+      <button class="auth-submit" onclick="doLogin()">Login</button>
+    </div>
+    <div id="registerForm" style="display:none">
+      <input class="auth-input" id="regName" placeholder="Full Name">
+      <input class="auth-input" id="regEmail" placeholder="Email" type="email">
+      <input class="auth-input" id="regPass" type="password" placeholder="Password (min 4 chars)">
+      <input class="auth-input" id="regRef" placeholder="Referral Code (optional)">
+      <button class="auth-submit" onclick="doRegister()">Create Account</button>
+    </div>
+    <div class="auth-msg" id="authMsg"></div>
+  </div>
+</div>
+
+<div class="app">
+  <header>
+    <h1 id="pageTitle">🎰 Casino Arcade</h1>
+    <div class="header-right">
+      <button class="hdr-btn" id="accountBtn">👤 Account</button>
+      <div class="balance">Coins: <span id="balance">0</span></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="panel active">
+      <div class="home-title">Choose Your Game</div>
+      <div class="home-sub">25 games • Tap any to play</div>
+      <div class="game-grid">
+        <a class="game-card" href="#ud"><div class="game-icon">🎲</div><div class="game-name">7 Up Down</div></a>
+        <a class="game-card" href="#bj"><div class="game-icon">🃏</div><div class="game-name">Blackjack</div></a>
+        <a class="game-card" href="#bacc"><div class="game-icon">👑</div><div class="game-name">Baccarat</div></a>
+        <a class="game-card" href="#rou"><div class="game-icon">🎡</div><div class="game-name">Roulette</div></a>
+        <a class="game-card" href="#dt"><div class="game-icon">🐉</div><div class="game-name">Dragon Tiger</div></a>
+        <a class="game-card" href="#ab"><div class="game-icon">🎴</div><div class="game-name">Andar Bahar</div></a>
+        <a class="game-card" href="#tp"><div class="game-icon">🃏</div><div class="game-name">Teen Patti</div></a>
+        <a class="game-card" href="#sb"><div class="game-icon">🎲</div><div class="game-name">Sic Bo</div></a>
+        <a class="game-card" href="#hl"><div class="game-icon">⬆️</div><div class="game-name">Hi-Lo</div></a>
+        <a class="game-card" href="#war"><div class="game-icon">⚔️</div><div class="game-name">War</div></a>
+        <a class="game-card" href="#tcp"><div class="game-icon">♠️</div><div class="game-name">3-Card Poker</div></a>
+        <a class="game-card" href="#he"><div class="game-icon">🏆</div><div class="game-name">Texas Hold'em</div></a>
+        <a class="game-card" href="#cb"><div class="game-icon">🏝️</div><div class="game-name">Caribbean Stud</div></a>
+        <a class="game-card" href="#rd"><div class="game-icon">🐕</div><div class="game-name">Red Dog</div></a>
+        <a class="game-card" href="#pd"><div class="game-icon">🎲</div><div class="game-name">Poker Dice</div></a>
+        <a class="game-card" href="#cr"><div class="game-icon">🎯</div><div class="game-name">Craps</div></a>
+        <a class="game-card" href="#fpc"><div class="game-icon">🦀</div><div class="game-name">Fish-Prawn-Crab</div></a>
+        <a class="game-card" href="#mw"><div class="game-icon">💰</div><div class="game-name">Money Wheel</div></a>
+        <a class="game-card" href="#cw"><div class="game-icon">⚔️</div><div class="game-name">Casino War</div></a>
+        <a class="game-card" href="#pon"><div class="game-icon">🎩</div><div class="game-name">Pontoon</div></a>
+        <a class="game-card" href="#lir"><div class="game-icon">🚗</div><div class="game-name">Let It Ride</div></a>
+        <a class="game-card" href="#cal"><div class="game-icon">🎲</div><div class="game-name">Chuck-a-Luck</div></a>
+        <a class="game-card" href="#bjs"><div class="game-icon">🔄</div><div class="game-name">BJ Switch</div></a>
+        <a class="game-card" href="#pg"><div class="game-icon">🀄</div><div class="game-name">Pai Gow</div></a>
+        <a class="game-card" href="#ck"><div class="game-icon">🏏</div><div class="game-name">Cricket</div></a>
+      </div>
+    </section>
+
+    <!-- 7 UP DOWN -->
+    <section id="ud" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🎲 7 Up Down</div>
+      <div class="label">Choose 7 Up, 7 Down, or Exact Sum</div>
+      <div class="choices" style="margin-top:14px">
+        <button data-ud="up" class="updown-btn up active">7 UP (7-12)</button>
+        <button data-ud="down" class="updown-btn down">7 DOWN (2-6)</button>
+        <button data-ud="seven">EXACT 7</button>
+      </div>
+      <div class="choices" id="udExactRow" style="display:none;margin-top:10px">
+        <button data-udn="2">2</button><button data-udn="3">3</button><button data-udn="4">4</button>
+        <button data-udn="5">5</button><button data-udn="6">6</button><button data-udn="8">8</button>
+        <button data-udn="9">9</button><button data-udn="10">10</button>
+        <button data-udn="11">11</button><button data-udn="12">12</button>
+      </div>
+      <div class="dice-row"><div class="die" id="ud1">⚀</div><div class="die" id="ud2">⚀</div></div>
+      <div class="label" id="udSum" style="font-size:1.3rem;color:#ffd700">Sum: -</div>
+      <button class="btn" id="udRoll">Roll (10)</button>
+      <div class="msg" id="udMsg"></div>
+    </section>
+
+    <!-- BLACKJACK -->
+    <section id="bj" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🃏 Blackjack</div>
+      <div class="label">Dealer: <span id="bjDScore">?</span></div>
+      <div class="card-row" id="bjD"></div>
+      <div class="label">You: <span id="bjPScore">0</span></div>
+      <div class="card-row" id="bjP"></div>
+      <button class="btn" id="bjDeal">Deal (10)</button>
+      <button class="btn" id="bjHit" disabled>Hit</button>
+      <button class="btn btn-gold" id="bjStand" disabled>Stand</button>
+      <div class="msg" id="bjMsg"></div>
+    </section>
+
+    <!-- BACCARAT -->
+    <section id="bacc" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">👑 Baccarat</div>
+      <div class="label">Player</div><div class="card-row" id="baccP"></div>
+      <div class="label">Banker</div><div class="card-row" id="baccB"></div>
+      <div class="choices">
+        <button data-bacc="player" class="active">Player 2x</button>
+        <button data-bacc="banker">Banker 1.95x</button>
+        <button data-bacc="tie">Tie 8x</button>
+      </div>
+      <button class="btn" id="baccDeal">Deal (10)</button>
+      <div class="msg" id="baccMsg"></div>
+    </section>
+
+    <!-- ROULETTE -->
+    <section id="rou" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🎡 Roulette</div>
+      <div class="roulette-result" id="rouResult">?</div>
+      <div class="choices">
+        <button data-rou="red" class="active">Red 2x</button>
+        <button data-rou="black">Black 2x</button>
+        <button data-rou="green">Green 14x</button>
+        <button data-rou="odd">Odd 2x</button>
+        <button data-rou="even">Even 2x</button>
+        <button data-rou="low">1-18 2x</button>
+        <button data-rou="high">19-36 2x</button>
+      </div>
+      <button class="btn" id="rouSpin">Spin (10)</button>
+      <div class="msg" id="rouMsg"></div>
+    </section>
+
+    <!-- DRAGON TIGER -->
+    <section id="dt" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🐉 Dragon Tiger</div>
+      <div class="label">Dragon</div><div class="card-row" id="dtD"></div>
+      <div class="label">Tiger</div><div class="card-row" id="dtT"></div>
+      <div class="choices">
+        <button data-dt="dragon" class="active">Dragon 2x</button>
+        <button data-dt="tiger">Tiger 2x</button>
+        <button data-dt="tie">Tie 8x</button>
+      </div>
+      <button class="btn" id="dtDeal">Deal (10)</button>
+      <div class="msg" id="dtMsg"></div>
+    </section>
+
+    <!-- ANDAR BAHAR -->
+    <section id="ab" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🎴 Andar Bahar</div>
+      <div class="label">Joker</div><div class="card-row" id="abJ"></div>
+      <div class="label">Andar</div><div class="card-row" id="abA"></div>
+      <div class="label">Bahar</div><div class="card-row" id="abB"></div>
+      <div class="choices">
+        <button data-ab="andar" class="active">Andar 2x</button>
+        <button data-ab="bahar">Bahar 2x</button>
+      </div>
+      <button class="btn" id="abDeal">Deal (10)</button>
+      <div class="msg" id="abMsg"></div>
+    </section>
+
+    <!-- TEEN PATTI -->
+    <section id="tp" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🃏 Teen Patti</div>
+      <div class="label">Dealer</div><div class="card-row" id="tpD"></div>
+      <div class="label">You</div><div class="card-row" id="tpP"></div>
+      <button class="btn" id="tpDeal">Deal (10)</button>
+      <div class="msg" id="tpMsg"></div>
+    </section>
+
+    <!-- SIC BO -->
+    <section id="sb" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🎲 Sic Bo</div>
+      <div class="dice-row">
+        <div class="die" id="sb1">⚀</div><div class="die" id="sb2">⚀</div><div class="die" id="sb3">⚀</div>
+      </div>
+      <div class="choices">
+        <button data-sb="small" class="active">Small 4-10 (2x)</button>
+        <button data-sb="big">Big 11-17 (2x)</button>
+        <button data-sb="triple">Any Triple (30x)</button>
+      </div>
+      <button class="btn" id="sbRoll">Roll (10)</button>
+      <div class="msg" id="sbMsg"></div>
+    </section>
+
+    <!-- HI-LO -->
+    <section id="hl" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">⬆️ Hi-Lo</div>
+      <div class="card-row" id="hlCard"></div>
+      <div class="choices">
+        <button data-hl="hi" class="active">Higher</button>
+        <button data-hl="lo">Lower</button>
+      </div>
+      <button class="btn" id="hlPlay">Play (10)</button>
+      <div class="msg" id="hlMsg"></div>
+    </section>
+
+    <!-- WAR -->
+    <section id="war" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">⚔️ War</div>
+      <div class="label">Dealer</div><div class="card-row" id="warD"></div>
+      <div class="label">You</div><div class="card-row" id="warP"></div>
+      <button class="btn" id="warPlay">Play (10)</button>
+      <div class="msg" id="warMsg"></div>
+    </section>
+
+    <!-- 3-CARD POKER -->
+    <section id="tcp" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">♠️ 3-Card Poker</div>
+      <div class="label">Dealer</div><div class="card-row" id="tcpD"></div>
+      <div class="label">You</div><div class="card-row" id="tcpP"></div>
+      <button class="btn" id="tcpDeal">Deal (10)</button>
+      <div class="msg" id="tcpMsg"></div>
+    </section>
+
+    <!-- TEXAS HOLD'EM -->
+    <section id="he" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🏆 Texas Hold'em</div>
+      <div class="label">Dealer</div><div class="card-row" id="heD"></div>
+      <div class="label">Community</div><div class="card-row" id="heC"></div>
+      <div class="label">You</div><div class="card-row" id="heP"></div>
+      <button class="btn" id="heDeal">Deal (10)</button>
+      <div class="msg" id="heMsg"></div>
+    </section>
+
+    <!-- CARIBBEAN STUD -->
+    <section id="cb" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🏝️ Caribbean Stud</div>
+      <div class="label">Dealer (1 exposed)</div><div class="card-row" id="cbD"></div>
+      <div class="label">You</div><div class="card-row" id="cbP"></div>
+      <button class="btn" id="cbDeal">Deal (10)</button>
+      <button class="btn btn-gold" id="cbRaise" disabled>Raise (20)</button>
+      <button class="btn btn-red" id="cbFold" disabled>Fold</button>
+      <div class="msg" id="cbMsg"></div>
+    </section>
+
+    <!-- RED DOG -->
+    <section id="rd" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🐕 Red Dog</div>
+      <div class="label" id="rdSpread">Spread: -</div>
+      <div class="card-row" id="rdC"></div>
+      <button class="btn" id="rdDeal">Deal (10)</button>
+      <div class="msg" id="rdMsg"></div>
+    </section>
+
+    <!-- POKER DICE -->
+    <section id="pd" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🎲 Poker Dice</div>
+      <div class="dice-row" id="pdDice">
+        <div class="die">⚀</div><div class="die">⚀</div><div class="die">⚀</div><div class="die">⚀</div><div class="die">⚀</div>
+      </div>
+      <button class="btn" id="pdRoll">Roll (10)</button>
+      <div class="msg" id="pdMsg"></div>
+    </section>
+
+    <!-- CRAPS -->
+    <section id="cr" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🎯 Craps</div>
+      <div class="dice-row"><div class="die" id="cr1">⚀</div><div class="die" id="cr2">⚀</div></div>
+      <div class="label" id="crPoint">Point: -</div>
+      <button class="btn" id="crRoll">Roll (10)</button>
+      <div class="msg" id="crMsg"></div>
+    </section>
+
+    <!-- FISH PRAWN CRAB -->
+    <section id="fpc" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🦀 Fish-Prawn-Crab</div>
+      <div class="choices" id="fpcChoices">
+        <button data-fpc="0" class="fpc-btn active">🐟</button>
+        <button data-fpc="1" class="fpc-btn">🦐</button>
+        <button data-fpc="2" class="fpc-btn">🦀</button>
+        <button data-fpc="3" class="fpc-btn">🐓</button>
+        <button data-fpc="4" class="fpc-btn">🎃</button>
+        <button data-fpc="5" class="fpc-btn">🪙</button>
+      </div>
+      <div class="dice-row"><div class="die" id="fp1">?</div><div class="die" id="fp2">?</div><div class="die" id="fp3">?</div></div>
+      <button class="btn" id="fpcPlay">Play (10)</button>
+      <div class="msg" id="fpcMsg"></div>
+    </section>
+
+    <!-- MONEY WHEEL -->
+    <section id="mw" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">💰 Money Wheel</div>
+      <div class="roulette-result" id="mwResult">?</div>
+      <div class="label">Segments: 0x lose • 2x • 5x • 10x • 20x</div>
+      <button class="btn" id="mwSpin">Spin (10)</button>
+      <div class="msg" id="mwMsg"></div>
+    </section>
+
+    <!-- CASINO WAR -->
+    <section id="cw" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">⚔️ Casino War</div>
+      <div class="label">Dealer</div><div class="card-row" id="cwD"></div>
+      <div class="label">You</div><div class="card-row" id="cwP"></div>
+      <button class="btn" id="cwDeal">Deal (10)</button>
+      <button class="btn btn-gold" id="cwWar" disabled>Go to War</button>
+      <button class="btn btn-red" id="cwSurrender" disabled>Surrender</button>
+      <div class="msg" id="cwMsg"></div>
+    </section>
+
+    <!-- PONTOON -->
+    <section id="pon" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🎩 Pontoon</div>
+      <div class="label">Dealer: <span id="ponDScore">?</span></div><div class="card-row" id="ponD"></div>
+      <div class="label">You: <span id="ponPScore">0</span></div><div class="card-row" id="ponP"></div>
+      <button class="btn" id="ponDeal">Deal (10)</button>
+      <button class="btn" id="ponHit" disabled>Hit</button>
+      <button class="btn btn-gold" id="ponStand" disabled>Stand</button>
+      <div class="msg" id="ponMsg"></div>
+    </section>
+
+    <!-- LET IT RIDE -->
+    <section id="lir" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🚗 Let It Ride</div>
+      <div class="label">Community</div><div class="card-row" id="lirC"></div>
+      <div class="label">Your Hand</div><div class="card-row" id="lirP"></div>
+      <button class="btn" id="lirDeal">Deal (30)</button>
+      <button class="btn btn-red" id="lirPull1" disabled>Pull Back 1</button>
+      <button class="btn btn-red" id="lirPull2" disabled>Pull Back 2</button>
+      <button class="btn btn-gold" id="lirRide" disabled>Let It Ride</button>
+      <div class="msg" id="lirMsg"></div>
+    </section>
+
+    <!-- CHUCK-A-LUCK -->
+    <section id="cal" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🎲 Chuck-a-Luck</div>
+      <div class="choices" id="calChoices">
+        <button data-cal="1" class="active">1</button><button data-cal="2">2</button>
+        <button data-cal="3">3</button><button data-cal="4">4</button>
+        <button data-cal="5">5</button><button data-cal="6">6</button>
+        <button data-cal="small">Small</button><button data-cal="big">Big</button>
+      </div>
+      <div class="dice-row"><div class="die" id="cal1">?</div><div class="die" id="cal2">?</div><div class="die" id="cal3">?</div></div>
+      <button class="btn" id="calRoll">Roll (10)</button>
+      <div class="msg" id="calMsg"></div>
+    </section>
+
+    <!-- BJ SWITCH -->
+    <section id="bjs" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🔄 BJ Switch</div>
+      <div class="label">Dealer: <span id="bjsDScore">?</span></div><div class="card-row" id="bjsD"></div>
+      <div class="hand-block">
+        <div class="label">Hand 1: <span id="bjsS1">0</span></div><div class="card-row" id="bjsH1"></div>
+        <button class="btn" id="bjsHit1" disabled>Hit</button>
+        <button class="btn btn-gold" id="bjsStand1" disabled>Stand</button>
+      </div>
+      <div class="hand-block">
+        <div class="label">Hand 2: <span id="bjsS2">0</span></div><div class="card-row" id="bjsH2"></div>
+        <button class="btn" id="bjsHit2" disabled>Hit</button>
+        <button class="btn btn-gold" id="bjsStand2" disabled>Stand</button>
+      </div>
+      <button class="btn" id="bjsDeal">Deal Both (20)</button>
+      <button class="btn btn-green" id="bjsSwitch" disabled>Switch 2nd Cards</button>
+      <div class="msg" id="bjsMsg"></div>
+    </section>
+
+    <!-- PAI GOW -->
+    <section id="pg" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🀄 Pai Gow</div>
+      <div class="label">Dealer — 7 cards</div><div class="card-row" id="pgD"></div>
+      <div class="label" style="color:#2ecc71">Your Back Hand (5)</div><div class="card-row" id="pgBack"></div>
+      <div class="label" style="color:#f39c12">Your Front Hand (2)</div><div class="card-row" id="pgFront"></div>
+      <button class="btn" id="pgDeal">Deal (10)</button>
+      <div class="msg" id="pgMsg"></div>
+    </section>
+
+    <!-- CRICKET -->
+    <section id="ck" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">🏏 Cricket</div>
+      <div id="ckField" style="height:130px;position:relative;background:linear-gradient(180deg,#0a3a20,#1a5c30);border-radius:12px;margin:10px 0;overflow:hidden;border:1px solid #2ecc71">
+        <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(180deg,#8b5a2b,#6b4423)"></div>
+        <div id="ckBat" style="position:absolute;bottom:10px;left:55%;font-size:2.5rem;transform-origin:bottom center;transition:transform .15s">🏏</div>
+        <div id="ckBall" style="position:absolute;bottom:30px;right:5%;font-size:1.4rem;transition:all .1s linear">🔴</div>
+      </div>
+      <div class="label" id="ckResult" style="font-size:1.1rem;color:#ffd700;min-height:28px">Choose your bet!</div>
+      <div class="choices" style="margin-top:10px">
+        <button data-ck="0">Dot 2x</button>
+        <button data-ck="1">1 Run 2.5x</button>
+        <button data-ck="2">2 Runs 5x</button>
+        <button data-ck="3">3 Runs 10x</button>
+        <button data-ck="4" class="active">4 Runs 8x</button>
+        <button data-ck="6">6 Runs 20x</button>
+        <button data-ck="W">Wicket 50x</button>
+      </div>
+      <button class="btn" id="ckBowl">🏏 Bowl (10)</button>
+      <div class="msg" id="ckMsg"></div>
+    </section>
+
+    <!-- ACCOUNT -->
+    <section id="account" class="panel">
+      <a class="back-btn" href="#home">← Home</a>
+      <div class="game-header-title">👤 My Account</div>
+      <div id="acctUsername" class="label" style="font-size:.85rem;margin-bottom:12px"></div>
+      <div class="acct-tabs">
+        <button data-acct="wallet" class="active">💰 Wallet</button>
+        <button data-acct="deposit">📥 Deposit</button>
+        <button data-acct="withdraw">📤 Withdraw</button>
+        <button data-acct="refer">🎁 Refer</button>
+        <button data-acct="betHist">🎲 Bets</button>
+        <button data-acct="txHist">📜 Txns</button>
+      </div>
+      <div class="acct-content active" data-acctp="wallet">
+        <div style="text-align:center;margin-bottom:14px">
+          <div style="color:#8fa3c8;font-size:.82rem">Available Balance</div>
+          <div style="font-size:2.2rem;font-weight:900;color:#ffd700" id="acctBalance">₹0</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="acct-submit" onclick="document.querySelector('[data-acct=deposit]').click()">+ Add Money</button>
+          <button class="acct-submit red" onclick="document.querySelector('[data-acct=withdraw]').click()">Withdraw</button>
+        </div>
+        <button class="acct-submit red" style="margin-top:14px;background:linear-gradient(135deg,#666,#333)" onclick="doLogout()">Logout</button>
+      </div>
+      <div class="acct-content" data-acctp="deposit">
+        <div class="label" style="margin-bottom:8px">Add Money (Demo)</div>
+        <input class="acct-input" id="depAmount" type="number" placeholder="Amount (min ₹50)" min="50">
+        <div style="display:flex;gap:6px;margin-bottom:8px">
+          <button class="acct-submit" style="margin:0" onclick="document.getElementById('depAmount').value=100">₹100</button>
+          <button class="acct-submit" style="margin:0" onclick="document.getElementById('depAmount').value=500">₹500</button>
+          <button class="acct-submit" style="margin:0" onclick="document.getElementById('depAmount').value=1000">₹1000</button>
+        </div>
+        <button class="acct-submit" onclick="doDeposit()">Add Money</button>
+        <div class="msg" id="depMsg" style="text-align:center"></div>
+      </div>
+      <div class="acct-content" data-acctp="withdraw">
+        <div class="label" style="margin-bottom:8px">Withdraw (Demo)</div>
+        <input class="acct-input" id="wdAmount" type="number" placeholder="Amount (min ₹100)" min="100">
+        <input class="acct-input" id="wdUpi" placeholder="UPI ID (demo)">
+        <button class="acct-submit red" onclick="doWithdraw()">Request Withdraw</button>
+        <div class="msg" id="wdMsg" style="text-align:center"></div>
+      </div>
+      <div class="acct-content" data-acctp="refer">
+        <div class="ref-box">
+          <div style="color:#8fa3c8;font-size:.78rem">Your Referral Code</div>
+          <div class="ref-code" id="refCode">------</div>
+          <button class="hdr-btn" style="margin-top:8px" onclick="copyRefCode()">📋 Copy & Share</button>
+        </div>
+        <div class="ref-stats">
+          <div><b id="refCount">0</b><span style="color:#8fa3c8;font-size:.75rem">Friends Joined</span></div>
+          <div><b id="refEarn">₹0</b><span style="color:#8fa3c8;font-size:.75rem">Total Earned</span></div>
+        </div>
+        <div class="label" style="margin-top:14px;font-size:.75rem;line-height:1.5">💡 Har friend join pe <b style="color:#ffd700">₹50</b> + 5% commission.</div>
+      </div>
+      <div class="acct-content" data-acctp="betHist">
+        <div class="history-list" id="betHistoryList"></div>
+      </div>
+      <div class="acct-content" data-acctp="txHist">
+        <div class="history-list" id="txHistoryList"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Website live chat: messages go to the configured Telegram admin bot -->
+<button id="chatToggle" type="button" aria-controls="chatPanel">💬 Live Support</button>
+<section id="chatPanel" hidden aria-label="Live support chat">
+  <header class="chat-head"><div><strong>Casino Arcade Support</strong><small id="chatStatus">Connecting…</small></div><button type="button" id="chatClose" aria-label="Close chat" style="border:0;background:transparent;color:white;font-size:20px;cursor:pointer">×</button></header>
+  <div id="chatMessages" aria-live="polite"></div>
+  <form id="chatForm"><input id="chatInput" maxlength="1000" placeholder="Type your message…" autocomplete="off" required><button type="submit">Send</button></form>
+</section>
+
+<script src="js/core.js"></script>
+<script src="js/livefeed.js"></script>
+<script src="js/routing.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/account.js"></script>
+<script src="js/vip.js"></script>
+<script src="js/payment.js"></script>
+<script src="js/games.js"></script>
+<script src="js/livechat.js"></script>
+</body>
+</html>

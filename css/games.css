@@ -1,0 +1,19 @@
+.roulette-result{width:80px;height:80px;border-radius:50%;margin:14px auto;display:grid;place-items:center;font-size:1.7rem;font-weight:900;background:#1a2851;border:3px solid #3557a8;color:#fff;transition:.3s}
+.roulette-result.red{background:#c0392b;border-color:#e74c3c}
+.roulette-result.black{background:#222;border-color:#555}
+.roulette-result.green{background:#1a7a3a;border-color:#2ecc71}
+.roulette-result.spin{animation:spinR .8s ease}
+@keyframes spinR{from{transform:rotate(0)}to{transform:rotate(1440deg)}}
+
+.fpc-btn{font-size:1.5rem;padding:8px 14px!important}
+.updown-btn{padding:14px 22px!important;font-size:.95rem!important;border-radius:14px!important}
+.updown-btn.up{background:linear-gradient(135deg,#2ecc71,#1a7a3a)!important;border-color:#2ecc71!important;color:#fff!important}
+.updown-btn.down{background:linear-gradient(135deg,#e74c3c,#a93226)!important;border-color:#e74c3c!important;color:#fff!important}
+.updown-btn.active{box-shadow:0 0 24px rgba(255,255,255,.5);transform:scale(1.05)}
+.hand-block{background:rgba(0,0,0,.2);border:1px solid #1a4b2e;border-radius:12px;padding:8px;margin:8px 0}
+.game-bet-history{margin-top:12px;padding:10px;background:rgba(0,0,0,.25);border:1px solid #1a4b2e;border-radius:10px;font-size:.75rem;text-align:left}
+.game-bet-history-title{color:#8fa3c8;margin-bottom:6px;font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.5px}
+.gbh-row{display:flex;justify-content:space-between;padding:3px 0;color:#c9d7ff;border-bottom:1px solid rgba(53,87,168,.2)}
+.gbh-row:last-child{border-bottom:none}
+.gbh-win{color:#2ecc71;font-weight:800}
+.gbh-loss{color:#e74c3c;font-weight:800}

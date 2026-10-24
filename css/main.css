@@ -1,0 +1,62 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:radial-gradient(circle at top,#0a2818,#040810 70%);color:#fff;min-height:100vh;padding:16px;display:flex;justify-content:center}
+.app{width:100%;max-width:1000px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;padding:10px 14px;background:rgba(16,26,56,.6);border:1px solid #2e4b8f;border-radius:14px}
+h1{font-size:1.15rem}
+.balance{background:#101a38;border:1px solid #2e4b8f;padding:8px 14px;border-radius:999px;font-weight:700;color:#ffd700;white-space:nowrap}
+.header-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hdr-btn{padding:8px 14px;border-radius:10px;border:1px solid #6a5cff;background:rgba(106,92,255,.15);color:#fff;cursor:pointer;font-weight:700;font-size:.78rem}
+.hdr-btn:hover{background:rgba(106,92,255,.35)}
+
+#home{background:linear-gradient(180deg,#1b2145,#0d1429)!important;border-color:#22345e!important;min-height:500px}
+.home-title{font-size:1.3rem;font-weight:800;margin-bottom:6px;background:linear-gradient(135deg,#7b5cff,#00c2ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.home-sub{font-size:.8rem;color:#8fa3c8;margin-bottom:18px}
+.game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:10px;padding:4px 0}
+.game-card{display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a2851,#0d1429);border:2px solid #3557a8;border-radius:14px;padding:14px 6px;cursor:pointer;transition:.2s;text-decoration:none;color:#fff;min-height:105px}
+.game-card:hover{transform:translateY(-3px);border-color:#6a5cff;box-shadow:0 8px 24px rgba(106,92,255,.3)}
+.game-card:active{transform:scale(.97)}
+.game-icon{font-size:2.2rem;margin-bottom:6px;line-height:1}
+.game-name{font-size:.72rem;font-weight:700;text-align:center;line-height:1.2}
+
+.panel{display:none;background:linear-gradient(180deg,#0a2818,#071a10);border:1px solid #1a4b2e;border-radius:18px;padding:18px;text-align:center;min-height:440px;animation:fadeIn .25s}
+.panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(106,92,255,.15);border:1px solid #6a5cff;color:#fff;padding:7px 14px;border-radius:10px;cursor:pointer;font-size:.82rem;font-weight:700;margin-bottom:14px;text-decoration:none}
+.back-btn:hover{background:rgba(106,92,255,.35)}
+.game-header-title{font-size:1.1rem;font-weight:800;margin-bottom:14px}
+
+.btn{padding:11px 20px;border:none;border-radius:12px;cursor:pointer;font-weight:800;font-size:.85rem;color:#fff;background:linear-gradient(135deg,#7b5cff,#00c2ff);margin:4px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-red{background:linear-gradient(135deg,#e74c3c,#c0392b)}
+.btn-gold{background:linear-gradient(135deg,#f39c12,#e67e22);color:#000}
+.btn-green{background:linear-gradient(135deg,#2ecc71,#1a7a3a)}
+.msg{margin-top:12px;font-weight:700;color:#ffd700;min-height:22px}
+.choices{display:flex;justify-content:center;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.choices button{padding:7px 12px;border-radius:10px;border:1px solid #3557a8;background:#111a33;color:#c9d7ff;cursor:pointer;font-weight:700;font-size:.78rem}
+.choices button.active{background:#3557a8;color:#fff}
+.label{font-size:.82rem;color:#8fa3c8;margin-top:8px;font-weight:600}
+
+.card-row{display:flex;justify-content:center;gap:5px;margin:10px 0;min-height:82px;flex-wrap:wrap}
+.card{width:54px;height:78px;background:#fff;color:#111;border-radius:8px;padding:4px;display:flex;flex-direction:column;justify-content:space-between;font-weight:800;font-size:.82rem;box-shadow:0 4px 12px rgba(0,0,0,.4);animation:dealIn .35s ease}
+.card.red{color:#d32f2f}
+.card.back{background:repeating-linear-gradient(45deg,#1a2851 0 6px,#22345e 6px 12px);border:2px solid #fff;color:transparent}
+.card .tl,.card .br{font-size:.72rem;line-height:1}
+.card .br{align-self:flex-end;transform:rotate(180deg)}
+.card .mid{align-self:center;font-size:1.3rem}
+.card.flipping{animation:flipCard .5s ease}
+@keyframes dealIn{from{transform:translate(-120px,-60px) rotate(-20deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes flipCard{0%,100%{transform:rotateY(0)}50%{transform:rotateY(90deg)}}
+
+.dice-row{display:flex;justify-content:center;gap:12px;margin:14px 0}
+.die{width:60px;height:60px;background:#fff;color:#111;border-radius:12px;display:grid;place-items:center;font-size:36px;line-height:1}
+.die.rolling{animation:shake .1s infinite}
+@keyframes shake{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+
+@media(max-width:520px){
+  .card{width:44px;height:64px;font-size:.68rem}
+  .card .mid{font-size:1rem}
+  .die{width:48px;height:48px;font-size:30px}
+  .game-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr))}
+  .game-icon{font-size:1.8rem}
+  .game-name{font-size:.65rem}
+}
